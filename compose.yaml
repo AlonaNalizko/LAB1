@@ -1,0 +1,27 @@
+
+services:
+  app1:
+    build: 
+      context: .
+      dockerfile: dockerfile
+
+  app2:
+    build: 
+      context: .
+      dockerfile: dockerfile
+
+  app3:
+    build: 
+      context: .
+      dockerfile: dockerfile
+
+  nginx:
+    image: nginx:alpine3.21
+    ports:
+      - 7070:80
+    volumes:
+      - ./nginx:/etc/nginx/templates
+    depends_on:
+      - app1
+      - app2
+      - app3
